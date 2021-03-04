@@ -19,7 +19,7 @@ if(amazon_priceblock) {
                 e.preventDefault();
                 window.location.replace(location_href);
             } else {
-                chrome.storage.sync.set({'cost':parseInt(cp)});
+                chrome.storage.sync.set({'cost':parseFloat(cp)});
                 window.chrome.runtime.sendMessage({
                     action: "add"
                 });
