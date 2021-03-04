@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nudget</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="popup.js"></script>
+</head>
+<body>
+    <H1>Nudget</H1>
+    <hr>
+    <div id="setgoal">
+        <h3>Set Limit</h3>
+        <input type="number" id="limit">
+        <input type="button" value="set!" id="limitbtn">
+    </div>
+    <div id="goal" style="display: none;">
+        <p id="ug"></p><input type="button" value="edit" id="cg">
+        <p id="bartext"></p>
+        <progress id="status" value="" max=""></progress>
+    </div>
+    <div id="reason" style="display:none;">
+        <input type="number" id="climit">
+        <input type="text" id="r" placeholder="reason">
+        <input type="button" value="set!" id="climitbtn">
+    </div>
+</body>
+</html>

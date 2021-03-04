@@ -1,0 +1,36 @@
+{
+    "manifest_version" : 2,
+    "name" : "Nudget",
+    "version" : "1",
+
+    "browser_action" : {
+        "default_popup" : "popup.html"
+    },
+    
+    "background":{
+        "scripts":["eventPage.js"],
+        "persistent":false
+    },
+
+    "content_scripts" : [
+        {
+            "matches" : [
+                "*://*.amazon.in/*"
+            ],
+            "js" : ["amazon.js"],
+            "css" : ["content.css"]
+        },
+        {
+            "matches" : [
+                "<all_urls>"
+            ],
+            "js" : ["content.js"],
+            "css" : ["content.css"]
+        }
+    ],
+    
+    "permissions" : [
+        "tabs",
+        "storage"
+    ]
+}
