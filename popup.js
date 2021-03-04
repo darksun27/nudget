@@ -22,6 +22,7 @@ $(function(){
             console.log(items.progress)
             let progress_bar = document.getElementById('status');
             progress_bar.value = items.progress;
+            progress_bar.max = glimit;
             let bar_text = document.getElementById('bartext');
             bar_text.innerText = (items.progress).toString() + '/' + glimit.toString();
             let ug = document.getElementById('ug');

@@ -15,7 +15,7 @@
     "content_scripts" : [
         {
             "matches" : [
-                "*://*.amazon.in/*"
+                "*://*.amazon.in/*", "*://*.amazon.com/*" 
             ],
             "js" : ["amazon.js"],
             "css" : ["content.css"]
