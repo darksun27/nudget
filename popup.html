@@ -37,24 +37,24 @@
         <div id="goal" style="display: none;">
             <div class="ui center aligned secondary vertical segment">
                 <div class="row mb">
-                    <a class="ui center aligned large yellow image label mb10">
+                    <span class="ui center aligned large yellow image label mb10" id="ul">
                         <i class="user circle icon"></i>
-                        Your Goal
-                    </a>
+                        Your Limit
+                    </span>
                 </div>
                 <div class="row mb">
                     <div class="ui left labeled button" tabindex="0" id="cg">
                         <span id="ug" class="ui tiny basic label">
                         </span>
                         <div class="tiny ui button">
-                            <i class="pencil alternate icon"></i> Change Goal
+                            <i class="pencil alternate icon"></i>Change Limit
                         </div>
                     </div>
                 </div>
             </div>
             <div class="ui secondary center aligned verical segment">
                 <div class="ui progress" id="status">
-                    <div class="bar"></div>
+                    <div class="bar"><div class="progress"></div></div>
                     <div class="label">Your Budget Consumption</div>
                 </div>
             </div>
@@ -77,9 +77,12 @@
                         </button>
                         <input id="r" type="text" value="" placeholder="Reason to change goal!">
                     </div>
+                    <button class="ui green button" id="cancel">
+                        Cancel
+                    </button>
                     <button class="ui primary button" id="climitbtn">
                         Change Goal!
-                      </button>
+                    </button>
                 </div>
             </div>
         </div>
