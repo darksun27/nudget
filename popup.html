@@ -2,26 +2,87 @@
 <html lang="en">
 <head>
     <title>Nudget</title>
+    <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.min.css">
     <script src="jquery-3.4.1.min.js"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
     <script src="popup.js"></script>
+    <style>
+        .mb {
+            margin-bottom: 5px!important;
+        }
+    </style>
 </head>
 <body>
-    <H1>Nudget</H1>
-    <hr>
-    <div id="setgoal">
-        <h3>Set Limit</h3>
-        <input type="number" id="limit">
-        <input type="button" value="set!" id="limitbtn">
-    </div>
-    <div id="goal" style="display: none;">
-        <p id="ug"></p><input type="button" value="edit" id="cg">
-        <p id="bartext"></p>
-        <progress id="status" value="" max=""></progress>
-    </div>
-    <div id="reason" style="display:none;">
-        <input type="number" id="climit">
-        <input type="text" id="r" placeholder="reason">
-        <input type="button" value="set!" id="climitbtn">
+    <div class="ui container">
+        <div class="ui verical segment">
+            <h1 class="ui center aligned header">Nudget</h1>
+        </div>
+        <div id="setgoal">
+            <div class="ui secondary segment center aligned vertical">
+            <h3 class="ui center aligned header">Set Maximum Limit</h3>
+            <div class="ui container">
+                <div class="ui mini left action input mb">
+                    <button class="ui mini teal labeled icon button">
+                      <i class="money bill alternate icon"></i>
+                      Budget
+                    </button>
+                    <input id="limit" type="number" value="" placeholder="100">
+                </div>
+                <button class="ui primary button" id="limitbtn">
+                    Set Limit!
+                  </button>
+            </div>
+            </div>
+        </div>
+        <div id="goal" style="display: none;">
+            <div class="ui center aligned secondary vertical segment">
+                <div class="row mb">
+                    <a class="ui center aligned large yellow image label mb10">
+                        <i class="user circle icon"></i>
+                        Your Goal
+                    </a>
+                </div>
+                <div class="row mb">
+                    <div class="ui left labeled button" tabindex="0" id="cg">
+                        <span id="ug" class="ui tiny basic label">
+                        </span>
+                        <div class="tiny ui button">
+                            <i class="pencil alternate icon"></i> Change Goal
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui secondary center aligned verical segment">
+                <div class="ui progress" id="status">
+                    <div class="bar"></div>
+                    <div class="label">Your Budget Consumption</div>
+                </div>
+            </div>
+        </div>
+        <div id="reason" style="display:none;">
+            <div class="ui secondary segment center aligned vertical">
+                <h3 class="ui center aligned header">Change Limit</h3>
+                <div class="ui container">
+                    <div class="ui mini left action input mb">
+                        <button class="ui  teal labeled icon button">
+                          <i class="money bill alternate icon"></i>
+                          New Goal
+                        </button>
+                        <input id="climit" type="number" value="" placeholder="100">
+                    </div>
+                    <div class="ui mini left action input mb">
+                        <button class="ui teal labeled icon button">
+                        <i class="question circle icon"></i>
+                          Reason?!
+                        </button>
+                        <input id="r" type="text" value="" placeholder="Reason to change goal!">
+                    </div>
+                    <button class="ui primary button" id="climitbtn">
+                        Change Goal!
+                      </button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

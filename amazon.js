@@ -8,6 +8,7 @@ if(amazon_priceblock) {
         buy_now.innerHTML += "<p>Ask yourself if you really need this!</p>";
         buy_now.addEventListener('click', (e) => {
             let costprice = document.getElementById('priceblock_ourprice');
+            let qty = document.querySelector('[id=quantity][data-action*="a-dropdown-select"]').value;
             let cp = "";
             costprice.innerText.split('').forEach((num) => {
                 if(Number.isInteger(parseInt(num)) || num == '.') {
@@ -19,7 +20,7 @@ if(amazon_priceblock) {
                 e.preventDefault();
                 window.location.replace(location_href);
             } else {
-                chrome.storage.sync.set({'cost':parseFloat(cp)});
+                chrome.storage.sync.set({'cost':parseFloat(cp)*qty});
                 window.chrome.runtime.sendMessage({
                     action: "add"
                 });
