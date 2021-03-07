@@ -17,8 +17,8 @@
             "matches" : [
                 "*://*.amazon.in/*", "*://*.amazon.com/*" 
             ],
-            "js" : ["amazon.js"],
-            "css" : ["content.css"]
+            "js" : ["mousetrap.min.js","amazon.js"],
+            "css" : ["Semantic-UI-CSS-master/semantic.min.js","content.css"]
         },
         {
             "matches" : [
@@ -28,6 +28,16 @@
             "css" : ["content.css"]
         }
     ],
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+              "windows": "Ctrl+Shift+Y",
+              "mac": "Command+Shift+Y",
+              "chromeos": "Ctrl+Shift+Y",
+              "linux": "Ctrl+Shift+Y"
+            }
+        }
+    },
     
     "permissions" : [
         "tabs",
