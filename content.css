@@ -1,9 +1,12 @@
 #top-nudget {
     position: fixed;
     top: 0;
-    width: 200px;
+    width: 400px;
     height: 200px;
     right: 0;
     z-index: 1000;
-    background-color: red;
+}
+
+.mb {
+    margin:5px !important;
 }

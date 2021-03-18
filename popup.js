@@ -71,6 +71,7 @@ $(function(){
         document.getElementById('goal').style.display = "none";
         document.getElementById('setgoal').style.display = "none";
         document.getElementById('reason').style.display = "block";
+        $('select.dropdown').dropdown();
         let limit = document.getElementById('climit').placeholder=glimit;
     })
     $('#cancel').click(() => {

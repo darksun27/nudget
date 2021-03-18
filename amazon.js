@@ -1,51 +1,44 @@
 let amazon_priceblock = document.getElementById('price');
 let location_href = document.location.href;
+let glimit = 100;
+let costprice = null;
+let qtyElem = null;
+let qty = 1;
+let cp = null;
+window.chrome.storage.sync.get('limit', (items) => {
+    if(!items.limit) {
+
+    } else {
+        glimit = items.limit;
+    }
+})
 if(amazon_priceblock) {
-    let popup = document.createElement("DIV");
-    popup.id = "top-nudget";
-    popup.title = "";
-    popup.innerHTML = `
-        <div class="ui verical segment">
-            <h1 class="ui center aligned header">Nudget</h1>
-        </div>
-        <div id="setgoal">
-            <div class="ui secondary segment center aligned vertical">
-            <h3 class="ui center aligned header">Set Maximum Limit</h3>
-            <div class="ui container">
-                This would cost you so much money!!!!
-                <button onclick="func()" class="ui primary button" id="limitbtn">
-                    I am just Exploring
-                </button>
-                <button onclick="cl()">
-                No Close this Tab
-                </button>
-            </div>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(popup);
-    var newScript = document.createElement("script");
-    var inlineScript = document.createTextNode(`const func = () => {document.getElementById('top-nudget').style.visibility="hidden";}`);
-    newScript.appendChild(inlineScript); 
-    document.body.appendChild(newScript);
+    costprice = document.getElementById('priceblock_ourprice');
+    if(!costprice) {
+        costprice = document.getElementById('priceblock_dealprice');
+    }
+    qtyElem = document.querySelector('[id=quantity][data-action*="a-dropdown-select"]');
+    qty = 1;
+    if(qtyElem) {
+        qty = qtyElem.value;
+    }
+    cp = "";
+    console.log(costprice);
+    costprice.innerText.split('').forEach((num) => {
+        if(Number.isInteger(parseInt(num)) || num == '.') {
+            cp+=num;
+        }
+    });
     amazon_priceblock.innerHTML = 
         "<p>Do You Really Want to Buy this?</p>" + amazon_priceblock.innerHTML;
     let buy_now = document.getElementById('buyNow');
     if(buy_now) {
         buy_now.innerHTML += "<p>Ask yourself if you really need this!</p>";
         buy_now.addEventListener('click', (e) => {
-            let costprice = document.getElementById('priceblock_ourprice');
-            let qty = document.querySelector('[id=quantity][data-action*="a-dropdown-select"]').value;
-            let cp = "";
-            costprice.innerText.split('').forEach((num) => {
-                if(Number.isInteger(parseInt(num)) || num == '.') {
-                    cp+=num;
-                }
-            });
             let response = confirm("Do you really want to buy this?");
             if(response == false) {
+                console.log(cp);
                 e.preventDefault();
-                popup.style.visibility = 'hidden';
             } else {
                 chrome.storage.sync.set({'cost':parseFloat(cp)*qty});
                 window.chrome.runtime.sendMessage({

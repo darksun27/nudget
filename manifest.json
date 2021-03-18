@@ -17,8 +17,14 @@
             "matches" : [
                 "*://*.amazon.in/*", "*://*.amazon.com/*" 
             ],
-            "js" : ["mousetrap.min.js","amazon.js"],
-            "css" : ["Semantic-UI-CSS-master/semantic.min.js","content.css"]
+            "js" : [
+                "jquery-3.4.1.min.js",
+                "Semantic-UI-CSS-master/semantic.min.js",
+                "amazon.js",
+                "amazon-buy-page-popup.js",
+                "amazon-popup-normal-page.js"
+            ],
+            "css" : ["Semantic-UI-CSS-master/semantic.min.css","content.css"]
         },
         {
             "matches" : [
