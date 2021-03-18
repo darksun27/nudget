@@ -19,4 +19,4 @@ Download the zip file and extract the contents.
 1. Open Google Chrome
 2. URL: chrome://extensions and enable developer mode
 3. Load Unpacked
-4. Choose the dyslexic-extension/Dyslexic Entension folder
+4. Choose the nudget folder
