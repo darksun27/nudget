@@ -33,7 +33,7 @@ if(amazon_priceblock) {
         "<p>Do You Really Want to Buy this?</p>" + amazon_priceblock.innerHTML;
     let buy_now = document.getElementById('buyNow');
     if(buy_now) {
-        buy_now.innerHTML += "<p>Ask yourself if you really need this!</p>";
+        buy_now.innerHTML += "<p><strong>Ask yourself if you really need this!</strong></p>";
         buy_now.addEventListener('click', (e) => {
             let response = confirm("Do you really want to buy this?");
             if(response == false) {
