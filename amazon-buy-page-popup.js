@@ -43,9 +43,13 @@ window.chrome.storage.sync.get('progress', (items) => {
             </div>
         </div>`;
         $(document).ready(() => {
-            $('#essential, #hide').click(() => {
+            $('#hide').click(() => {
                 $('#top-nudget').hide();
             });
+            $('#essential').click(() => {
+                $('#top-nudget').hide();
+                isEssential = true;
+            })
 
             $('#save').click(() => {
                 window.location.replace('https://forge.medium.com/8-money-experts-on-how-to-curb-an-online-shopping-habit-5fb9dc06d0b7')

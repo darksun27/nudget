@@ -5,6 +5,7 @@ let costprice = null;
 let qtyElem = null;
 let qty = 1;
 let cp = null;
+let isEssential = false;
 window.chrome.storage.sync.get('limit', (items) => {
     if(!items.limit) {
 
@@ -12,11 +13,6 @@ window.chrome.storage.sync.get('limit', (items) => {
         glimit = items.limit;
     }
 })
-
-window.onbeforeunload = () => {
-    window.chrome.storage.sync.set({'outlookappear': true})
-    return undefined;
-}
 
 if(amazon_priceblock) {
     costprice = document.getElementById('priceblock_ourprice');
@@ -30,6 +26,7 @@ if(amazon_priceblock) {
     }
     cp = "";
     console.log(costprice);
+    console.log(isEssential);
     costprice.innerText.split('').forEach((num) => {
         if(Number.isInteger(parseInt(num)) || num == '.') {
             cp+=num;
@@ -46,11 +43,12 @@ if(amazon_priceblock) {
                 console.log(cp);
                 e.preventDefault();
             } else {
-                chrome.storage.sync.set({'cost':parseFloat(cp)*qty});
+                chrome.storage.sync.set({'cost':isEssential ? 0 : parseFloat(cp)*qty});
                 window.chrome.runtime.sendMessage({
                     action: "add"
                 });
             }            
         })
+        isEssential = false;
     }
 }
