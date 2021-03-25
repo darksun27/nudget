@@ -12,6 +12,12 @@ window.chrome.storage.sync.get('limit', (items) => {
         glimit = items.limit;
     }
 })
+
+window.onbeforeunload = () => {
+    window.chrome.storage.sync.set({'outlookappear': true})
+    return undefined;
+}
+
 if(amazon_priceblock) {
     costprice = document.getElementById('priceblock_ourprice');
     if(!costprice) {
@@ -30,10 +36,10 @@ if(amazon_priceblock) {
         }
     });
     amazon_priceblock.innerHTML = 
-        "<p>Do You Really Want to Buy this?</p>" + amazon_priceblock.innerHTML;
+        "<h4>Do I Really Want to Buy this?</h4>" + amazon_priceblock.innerHTML;
     let buy_now = document.getElementById('buyNow');
     if(buy_now) {
-        buy_now.innerHTML += "<p><strong>Ask yourself if you really need this!</strong></p>";
+        buy_now.innerHTML += "<h4>Ask yourself if I really need this!</h4>";
         buy_now.addEventListener('click', (e) => {
             let response = confirm("Do you really want to buy this?");
             if(response == false) {

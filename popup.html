@@ -53,8 +53,8 @@
                 </div>
             </div>
             <div class="ui secondary center aligned verical segment">
-                <div class="ui progress" id="status">
-                    <div class="bar"><div class="progress"></div></div>
+                <div class="ui progress2" id="status">
+                    <div class="bar"><div class="progress2"></div></div>
                     <div class="label">Your Budget Consumption</div>
                 </div>
             </div>
@@ -63,28 +63,50 @@
             <div class="ui secondary segment center aligned vertical">
                 <h3 class="ui center aligned header">Change Limit</h3>
                 <div class="ui container">
-                    <div class="ui mini left action input mb">
-                        <button class="ui  teal labeled icon button">
-                          <i class="money bill alternate icon"></i>
-                          New Goal
-                        </button>
-                        <input id="climit" type="number" value="" placeholder="100">
+                    <h3><i class="money bill alternate icon"></i>New Goal</h3>    
+                    <div class="ui input mb" id="limitInp">
+                        <input id="climit" type="number" value="" placeholder="100" required>
                     </div>
-                    <div class="ui mini left action input mb">
-                        <button class="ui teal labeled icon button">
-                        <i class="question circle icon"></i>
-                          Reason?!
-                        </button>
-                        <input id="r" type="text" value="" placeholder="Reason to change goal!">
-                    </div>
+                    <h5 id='inpl' style="display: none;">Please fill this!</h5>
                     <button class="ui green button" id="cancel">
                         Cancel
                     </button>
-                    <button class="ui primary button" id="climitbtn">
-                        Change Goal!
+                    <button type="submit" class="ui primary button" id="confirmbtn">
+                        Confirm!
                     </button>
                 </div>
             </div>
+        </div>
+        <div id="changeReason" style="display: none;">
+            <form class="ui form">
+                <div class="grouped fields">
+                    <label for="fruit">Why did you made a change to the budget?</label>
+                    <div class="field" id="cr">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Apples" required>
+                            <label>Apples</label>
+                        </div><br/>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Oranges" required>
+                            <label>Oranges</label>
+                        </div><br/>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Pears" required>
+                            <label>Pears</label>
+                        </div><br/>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" id="dt" value="others" required>
+                            <label><input type="text" placeholder="Other Please Specify" id="oth" disabled></label>
+                        </div>
+                    </div>
+                </div>
+                <button class="ui green button" id="cancelR">
+                    Cancel
+                </button>
+                <button class="ui primary button" id="climitbtn" type="submit">
+                    Change Goal!
+                </button>
+            </form>
         </div>
     </div>
 </body>
