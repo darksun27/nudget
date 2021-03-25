@@ -28,11 +28,8 @@ window.chrome.storage.sync.get('progress', (items) => {
                 </div>
             </div>
         </div>`;
-        window.chrome.storage.sync.get('outlookappear', (items) => {
-            if(items.outlookappear !== false) {
-                document.body.appendChild(popup);
-            }
-        })
+        
+        document.body.appendChild(popup);
 
         $(document).ready(() => {
             $('#exploring, #essentials, #hide').click(() => {
