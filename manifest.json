@@ -19,6 +19,7 @@
             ],
             "js" : [
                 "jquery-3.4.1.min.js",
+                "jqueryui.js",
                 "Semantic-UI-CSS-master/semantic.min.js",
                 "amazon.js",
                 "amazon-buy-page-popup.js",

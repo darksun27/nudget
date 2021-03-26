@@ -11,7 +11,7 @@ window.chrome.storage.sync.get('progress', (items) => {
         popup.innerHTML = `
         <div class="ui segment">
             <div class="ui left aligned">
-                <h5 id="hide" class="ui header" style="cursor:pointer;">X</h5>
+                <h5 id="hide" class="ui header" style="cursor:pointer;max-width:15px;">X</h5>
             </div>
             <div class="ui verical segment">
                 <h4 class="ui center aligned header">Hey! It looks like you are going to buy a product.</h4>
@@ -43,6 +43,7 @@ window.chrome.storage.sync.get('progress', (items) => {
             </div>
         </div>`;
         $(document).ready(() => {
+            $('#top-nudget').draggable();
             $('#hide').click(() => {
                 $('#top-nudget').hide();
             });

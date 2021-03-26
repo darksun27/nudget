@@ -36,6 +36,7 @@ window.chrome.storage.sync.get('progress', (items) => {
                 $('#top-nudget').hide();
                 window.chrome.storage.sync.set({'outlookappear': false});
             })
+            $('#top-nudget').draggable();
             $('#save').click(() => {
                 window.location.replace('https://forge.medium.com/8-money-experts-on-how-to-curb-an-online-shopping-habit-5fb9dc06d0b7')
             })
