@@ -13,6 +13,11 @@ window.chrome.storage.sync.get('limit', (items) => {
         glimit = items.limit;
     }
 })
+window.chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
+    if(request.action == "reload"){
+        window.location.reload();
+    }
+})
 
 if(amazon_priceblock) {
     costprice = document.getElementById('priceblock_ourprice');

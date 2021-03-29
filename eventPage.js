@@ -3,7 +3,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
         window.chrome.storage.sync.get('userID', (items) => {
             if(items.userID) {
                 fetch(`
-                https://fate-warm-interest.glitch.me/save?userID=${items.userID}&action=change-budget&reason=${request.reason}&prevLimit=${request.prevLimit}&changeLimit=${request.changeLimit}`).then((response) => {});
+                https://fate-warm-interest.glitch.me/save?userID=${items.userID}&action=change-budget&reason=${request.reason}&prevLimit=${request.prevLimit}&changeLimit=${request.changeLimit}`).then((response) => {window.location.reload()});
+                chrome.tabs.query({url:["*://*.amazon.in/*", "*://*.amazon.com/*"]}, (tabs) => {
+                    tabs.forEach(tab => {
+                        chrome.tabs.sendMessage(tab.id, {action: "reload", value: tabs}); 
+                    });
+                });
             }
         })
     }
