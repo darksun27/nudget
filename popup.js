@@ -50,12 +50,15 @@ $(function(){
                 $('#status').progress2('set error');
             }
             else if($('#status').progress2('get percent') > 80) {
+                document.getElementById('budgetNotif').style.display = 'block';
                 $('#status').addClass('red').removeClass('green yellow')
                 $('#ul').addClass('red').removeClass('green yellow')
             } else if($('#status').progress2('get percent') > 50) {
+                document.getElementById('budgetNotif').style.display = 'none';
                 $('#status').addClass('yellow').removeClass('green red')
                 $('#ul').addClass('yellow').removeClass('green red')
             } else {
+                document.getElementById('budgetNotif').style.display = 'none';
                 $('#status').addClass('green').removeClass('yellow red')
                 $('#ul').addClass('green').removeClass('yellow red')
             }
