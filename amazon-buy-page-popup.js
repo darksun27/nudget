@@ -4,6 +4,10 @@ window.chrome.storage.sync.get('progress', (items) => {
         progress2 = 0;
     }
     if(amazon_priceblock) {
+        let safeZoneNudges = ['SZ1', 'SZ2', 'SZ3'];
+        let transitionZoneNudges = ['TZ1', 'TZ2', 'TZ3'];
+        let dangerZoneNudges = ['DZ1', 'DZ2', 'DZ3'];
+        let overbudgetNudges = ['OB1', 'OB2', 'OB3'];
         let popup = document.createElement("DIV");
         console.log(amazon_priceblock);
         popup.id = "top-nudget";
@@ -14,7 +18,7 @@ window.chrome.storage.sync.get('progress', (items) => {
                 <h5 id="hide" class="ui header" style="cursor:pointer;max-width:15px;">X</h5>
             </div>
             <div class="ui verical segment">
-                <h4 class="ui center aligned header">Hey! It looks like you are going to buy a product.</h4>
+                <h4 id="nudge" class="ui center aligned header">Hey! It looks like you are going to buy a product.</h4>
             </div>
             <div class="ui vertical segment">
                 <div class="ui segment">
@@ -37,6 +41,9 @@ window.chrome.storage.sync.get('progress', (items) => {
                 </div>
             </div>
             <div class="ui vertical segment center aligned">
+                <button id="okay" class="ui primary button mini mb">
+                    OKAY
+                </button>
                 <button id="essential" class="ui primary button mini mb">
                     This is an essential purchase
                 </button>
@@ -44,7 +51,7 @@ window.chrome.storage.sync.get('progress', (items) => {
         </div>`;
         $(document).ready(() => {
             $('#top-nudget').draggable();
-            $('#hide').click(() => {
+            $('#hide, #okay').click(() => {
                 $('#top-nudget').hide();
             });
             $('#essential').click(() => {
@@ -73,7 +80,7 @@ window.chrome.storage.sync.get('progress', (items) => {
             });
 
             if((progress2/glimit)*100 > 100) {
-                $('#status').progress2('set error');
+                $('#status').progress2('set error');                
             }
 
             else if($('#status').progress2('get percent') > 80) {
@@ -90,18 +97,22 @@ window.chrome.storage.sync.get('progress', (items) => {
             
             if(((progress2+parseFloat(cp))/parseFloat(glimit))*100 > 100) {
                 $('#status2').progress2('set error');
+                $('#nudge').text(overbudgetNudges[Math.floor(Math.random()*overbudgetNudges.length)]);
             }
 
             else if($('#status2').progress2('get percent') > 80) {
                 $('#status2').addClass('red').removeClass('green yellow');
+                $('#nudge').text(dangerZoneNudges[Math.floor(Math.random()*dangerZoneNudges.length)]);
             }
             
             else if($('#status2').progress2('get percent') > 50) {
                 $('#status2').addClass('yellow').removeClass('green red');
+                $('#nudge').text(transitionZoneNudges[Math.floor(Math.random()*transitionZoneNudges.length)]);
             }
             
             else {
                 $('#status2').addClass('green').removeClass('yellow red');
+                $('#nudge').text(safeZoneNudges[Math.floor(Math.random()*safeZoneNudges.length)]);
             }
         })
         document.body.appendChild(popup);

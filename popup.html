@@ -13,11 +13,40 @@
     </style>
 </head>
 <body>
-    <div class="ui container">
+    <div class="ui container" style="margin-top: 3px;">
+        <h4 class="ui right aligned header">
+            <span>
+                <i style="text-align: right;cursor: pointer;" id="privacy" class="shield alternate icon">
+                </i>
+            </span>
+        </h4>
         <div class="ui verical segment">
             <h1 class="ui center aligned header">Nudget</h1>
         </div>
-        <div id="setgoal">
+
+        <div id="dataP" style="display: none;">
+            <h4 class="ui center aligned header">All of your data is safe!</h4>
+            <h5 class="ui justified header">Nudget does not collect or ask to collect your personal information. All of your data if any being generated is stored on your local machine.
+                Nudget only reports your changes in budget and wheter or not you bought an item. Nudget does not include any information about the product but only its price.
+            </h5>
+            <center><button class="ui primary button mb" id="okay">
+                Okay!
+              </button></center>
+        </div>
+        <div id="onboarding">
+            <div class="ui secondary segment center aligned vertical">
+                <h3 class="ui center aligned header">Welcome to Nudget!</h3>
+                <div class="ui container">
+                    <h4 class="ui justified header">
+                        This is the Nudget Application. You will be asked to enter in a budget for personal expenditures over the next 2 weeks. You will have the oppotunity to change the budget later in settings.
+                    </h4>
+                    <button class="ui primary button" id="setup">
+                        Set Up!
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div id="setgoal" style="display: none;">
             <div class="ui secondary segment center aligned vertical">
             <h3 class="ui center aligned header">Set Maximum Limit</h3>
             <div class="ui container">

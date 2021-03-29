@@ -26,10 +26,15 @@ window.chrome.storage.sync.get('limit', (items) => {
         glimit = items.limit;
         document.getElementById('goal').style.display = "block";
         document.getElementById('setgoal').style.display = "none";
+        document.getElementById('onboarding').style.display = "none";
     }
 })
 
 $(function(){
+    $('#setup').click(() => {
+        document.getElementById('setgoal').style.display = "block";
+        document.getElementById('onboarding').style.display = "none";
+    })
     window.chrome.storage.sync.get('progress', (items) => {
         if(items.progress >= 0) {
             let ug = document.getElementById('ug');
@@ -56,7 +61,17 @@ $(function(){
             }
         }
     })
-
+    $('#privacy').click(() => {
+        document.getElementById('goal').style.display = "none";
+        document.getElementById('setgoal').style.display = "none";
+        document.getElementById('reason').style.display = "none";
+        document.getElementById('changeReason').style.display = "none";
+        document.getElementById('onboarding').style.display = "none";
+        document.getElementById('dataP').style.display = "block"
+    })
+    $('#okay').click(() => {
+        location.reload();
+    })
     $('#limitbtn').click(() => {
         let limit = document.getElementById('limit').value;
         if(limit > 0) {
@@ -81,11 +96,13 @@ $(function(){
         if(reason == "others") {
             reason = $('#oth').val();
         }
-        window.chrome.runtime.sendMessage({
-            action: "sendMessage",
-            value: reason
-        });
         if(changeLimit > 0 && reason) {
+            window.chrome.runtime.sendMessage({
+                action: "sendMessageBudget",
+                reason: reason,
+                prevLimit: glimit,
+                changeLimit: changeLimit
+            });
             window.chrome.storage.sync.set({'limit': changeLimit}, () => {
                 document.getElementById('goal').style.display = "block";
                 document.getElementById('setgoal').style.display = "none";

@@ -45,7 +45,9 @@ if(amazon_priceblock) {
             } else {
                 chrome.storage.sync.set({'cost':isEssential ? 0 : parseFloat(cp)*qty});
                 window.chrome.runtime.sendMessage({
-                    action: "add"
+                    action: "add",
+                    cost:parseFloat(cp)*qty,
+                    isEssential: isEssential
                 });
             }            
         })
