@@ -99,6 +99,11 @@ $(function(){
         if(limit > 0 && uid >= 1000) {
             window.chrome.storage.sync.set({'limit': limit}, () => {
                 window.chrome.storage.sync.set({'userID': uid}, () => {
+                    window.chrome.runtime.sendMessage({
+                        action: "sendMessageSetup",
+                        reason: "Extension-Setup",
+                        limit: limit
+                    });
                     document.getElementById('goal').style.display = "block";
                     document.getElementById('setgoal').style.display = "none";
                     location.reload();

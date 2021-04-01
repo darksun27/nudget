@@ -12,6 +12,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
             }
         })
     }
+    else if(request.action == "sendMessageSetup"){
+        window.chrome.storage.sync.get('userID', (items) => {
+            if(items.userID) {
+                fetch(`https://fate-warm-interest.glitch.me/save?userID=${items.userID}&action=${request.reason}&limit=${request.limit}`).then((response) => {});
+            }
+        })
+    }
     else if(request.action == "add"){
         chrome.storage.sync.get('cost', (items) => {
             chrome.storage.sync.get('progress', (p) => {
