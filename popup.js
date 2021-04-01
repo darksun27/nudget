@@ -7,17 +7,17 @@ window.chrome.storage.sync.get('progress', (items) => {
     }
 })
 
-window.chrome.storage.sync.get('userID', (items) => {
-    if(!items.userID) {
-        let randomPool = new Uint8Array(32);
-        crypto.getRandomValues(randomPool);
-        let hex = '';
-        for (var i = 0; i < randomPool.length; ++i) {
-            hex += randomPool[i].toString(16);
-        }
-        window.chrome.storage.sync.set({'userID': hex});
-    }
-})
+// window.chrome.storage.sync.get('userID', (items) => {
+//     if(!items.userID) {
+//         let randomPool = new Uint8Array(32);
+//         crypto.getRandomValues(randomPool);
+//         let hex = '';
+//         for (var i = 0; i < randomPool.length; ++i) {
+//             hex += randomPool[i].toString(16);
+//         }
+//         window.chrome.storage.sync.set({'userID': hex});
+//     }
+// })
 
 window.chrome.storage.sync.get('limit', (items) => {
     if(!items.limit) {
@@ -71,18 +71,43 @@ $(function(){
         document.getElementById('changeReason').style.display = "none";
         document.getElementById('onboarding').style.display = "none";
         document.getElementById('dataP').style.display = "block"
+        document.getElementById('resetP').style.display = "none";
+    })
+    $('#resetN').click(() => {
+        document.getElementById('goal').style.display = "none";
+        document.getElementById('setgoal').style.display = "none";
+        document.getElementById('reason').style.display = "none";
+        document.getElementById('changeReason').style.display = "none";
+        document.getElementById('onboarding').style.display = "none";
+        document.getElementById('dataP').style.display = "none";
+        document.getElementById('resetP').style.display = "block";
+    })
+    $('#yes').click(() => {
+        window.chrome.storage.sync.clear(() => {
+            location.reload();
+        })
+    })
+    $('#no').click(() => {
+        location.reload();
     })
     $('#okay').click(() => {
         location.reload();
     })
     $('#limitbtn').click(() => {
         let limit = document.getElementById('limit').value;
-        if(limit > 0) {
+        let uid = document.getElementById('uid').value;
+        if(limit > 0 && uid >= 1000) {
             window.chrome.storage.sync.set({'limit': limit}, () => {
-                document.getElementById('goal').style.display = "block";
-                document.getElementById('setgoal').style.display = "none";
-                location.reload();
+                window.chrome.storage.sync.set({'userID': uid}, () => {
+                    document.getElementById('goal').style.display = "block";
+                    document.getElementById('setgoal').style.display = "none";
+                    location.reload();
+                })
             });
+        } else {
+            $('#blimitInp').addClass('error');
+            $('#uidInp').addClass('error');
+            document.getElementById('setupErr').style.display="block";
         }
     })
     $('#cr, input[name="fruit"]').click(() => {

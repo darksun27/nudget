@@ -4,10 +4,10 @@ window.chrome.storage.sync.get('progress', (items) => {
         progress2 = 0;
     }
     if(amazon_priceblock) {
-        let safeZoneNudges = ['SZ1', 'SZ2', 'SZ3'];
-        let transitionZoneNudges = ['TZ1', 'TZ2', 'TZ3'];
-        let dangerZoneNudges = ['DZ1', 'DZ2', 'DZ3'];
-        let overbudgetNudges = ['OB1', 'OB2', 'OB3'];
+        let safeZoneNudges = ['Hey looks like you are on a product page! Here is an overview of your budget.'];
+        let transitionZoneNudges = ['Hey looks like you are on a product page! You have already spent more that 50% of your budget!'];
+        let dangerZoneNudges = ['Hey looks like you are on a product page! You are close to reaching your budget, are you sure you need to buy this?'];
+        let overbudgetNudges = ['Hey looks like you are on a product page! You have already exceeded your budget; you can change the budget, but should you?'];
         let popup = document.createElement("DIV");
         console.log(amazon_priceblock);
         popup.id = "top-nudget";

@@ -18,10 +18,24 @@
             <span>
                 <i style="text-align: right;cursor: pointer;" id="privacy" class="shield alternate icon">
                 </i>
+                <i style="text-align: right;cursor: pointer;" id="resetN" class="reply icon">
+                </i>
             </span>
         </h4>
         <div class="ui verical segment">
             <h1 class="ui center aligned header">Nudget</h1>
+        </div>
+
+        <div id="resetP" style="display: none;">
+            <h4 class="ui center aligned header">Do you want to reset Nudget?</h4>
+            <center>
+                <button class="ui green button" id="no">
+                    No
+                </button>
+                <button class="ui primary button mb" id="yes">
+                Yes
+              </button>
+            </center>
         </div>
 
         <div id="dataP" style="display: none;">
@@ -29,7 +43,8 @@
             <h5 class="ui justified header">Nudget does not collect or ask to collect your personal information. All of your data if any being generated is stored on your local machine.
                 Nudget only reports your changes in budget and wheter or not you bought an item. Nudget does not include any information about the product but only its price.
             </h5>
-            <center><button class="ui primary button mb" id="okay">
+            <center>
+                <button class="ui primary button mb" id="okay">
                 Okay!
               </button></center>
         </div>
@@ -55,14 +70,26 @@
             <div class="ui container">
                 <div class="ui mini left action input mb">
                     <button class="ui mini teal labeled icon button">
+                      <i class="user alternate icon"></i>
+                      UserID
+                    </button>
+                    <div class="ui input mb" id="uidInp">
+                        <input id="uid" type="number" value="" placeholder="userID">
+                    </div>
+                </div>
+                <div class="ui mini left action input mb">
+                    <button class="ui mini teal labeled icon button">
                       <i class="money bill alternate icon"></i>
                       Budget
                     </button>
-                    <input id="limit" type="number" value="" placeholder="100">
+                    <div class="ui input mb" id="blimitInp">
+                        <input id="limit" type="number" value="" placeholder="100">
+                    </div>
                 </div>
+                <h5 id='setupErr' style="display: none;">Please fill limit and UserID correctly!</h5>
                 <button class="ui primary button" id="limitbtn">
-                    Set Limit!
-                  </button>
+                    Finish Setup!
+                </button>
             </div>
             </div>
         </div>
@@ -115,16 +142,16 @@
                     <label for="fruit">Why did you made a change to the budget?</label>
                     <div class="field" id="cr">
                         <div class="ui radio checkbox">
-                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Apples" required>
-                            <label>Apples</label>
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="ExceedMyBudget" required>
+                            <label>I am going to exceed my budget.</label>
                         </div><br/>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Oranges" required>
-                            <label>Oranges</label>
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="ExtraMoney" required>
+                            <label>I have extra money to spend.</label>
                         </div><br/>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="Pears" required>
-                            <label>Pears</label>
+                            <input type="radio" name="fruit" tabindex="0" class="hidden" value="UnexpEssential" required>
+                            <label>I made an unexpected essential purchase.</label>
                         </div><br/>
                         <div class="ui radio checkbox">
                             <input type="radio" name="fruit" tabindex="0" class="hidden" id="dt" value="others" required>
